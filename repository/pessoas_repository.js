@@ -106,7 +106,7 @@ exports.deletar = (id, callback) => {
         } else if (res.rowCount > 0) {
             callback(null, res.rows[0]);
         } else {
-            const error = "pessoas nao encontrado";
+            const error = "Pessoa nao encontrado";
             callback(error, null);
         }
         cliente.end();

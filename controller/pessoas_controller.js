@@ -28,11 +28,11 @@ exports.buscarPorId = (req, res) => {
 exports.inserir = (req, res) => {
     let pessoa = req.body;
     if (pessoa && pessoa.nome && pessoa.idade) {
-        pessoasRepository.inserir(produto, (err, pessoaInserido) => {
+        pessoasRepository.inserir(pessoa, (err, pessoaInserido) => {
             if (err) {
                 res.status(500).json({ msg: err.msg })
             } else {
-                res.status(201).send(produto);
+                res.status(201).send(pessoa);
             }
         });
     } else {

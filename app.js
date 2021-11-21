@@ -17,7 +17,7 @@ app.use('/produtos', usuarioController.validarToken, produtoRota);
 const usuarioRota = require('./rotas/usuario_rota');
 app.use('/usuarios', usuarioRota);
 
-const pessoasRota = require('./rotas/pessoas_rota')
+const pessoasRota = require('./rotas/pessoas_rota');
 app.use('/pessoas', pessoasRota);
 
 app.listen(porta, () =>

@@ -6,7 +6,7 @@ const rota = express.Router();
 const produtoController = require('../controller/produto_controller');
 
 rota.get('/listar', produtoController.listar);
-rota.post('/', produtoController.inserir);
+rota.post('/inserir', produtoController.inserir);
 rota.get('/:id', produtoController.buscarPorId);
 rota.put('/:id', produtoController.atualizar);
 rota.delete('/:id', produtoController.deletar);
