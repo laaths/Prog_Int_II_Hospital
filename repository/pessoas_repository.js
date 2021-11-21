@@ -21,7 +21,7 @@ exports.listar = (callback) => {
 
 exports.inserir = (pessoas, callback) => {
     const sql = "INSERT INTO pessoas(nome, idade) VALUES ($1, $2) RETURNING *";
-    const values = [pessoas.nome, pessoassss.idade];
+    const values = [pessoas.nome, pessoas.idade];
 
     const cliente = new Client(conexao);
     cliente.connect();
@@ -33,8 +33,8 @@ exports.inserir = (pessoas, callback) => {
 
 exports.inserirTriagem = (pessoas, callback) => {
     if (pessoas.idade >= 80) {
-        const sql = "INSERT INTO pessoas(nome, idade) VALUES ($1, $2) RETURNING *";
-        const values = [pessoas.nome, pessoas.idade];
+        const sql = "INSERT INTO fila(pessoa, grau) VALUES ($1, $2) RETURNING *";
+        const values = [fila.pessoa, fila.grau];
 
         const cliente = new Client(conexao);
         cliente.connect();
@@ -68,7 +68,7 @@ exports.buscarPorId = (id, callback) => {
         } else if (res.rows && res.rows.length > 0) {
             callback(null, res.rows[0]);
         } else {
-            const error = "pessoas nao encontrado";
+            const error = "Pessoa nao encontrada";
             callback(error, null);
         }
         cliente.end();
@@ -76,7 +76,7 @@ exports.buscarPorId = (id, callback) => {
 }
 
 exports.atualizar = (id, pessoas, callback) => {
-    const sql = "UPDATE pesssoas SET nome=$1, idade=$2 WHERE id=$3 RETURNING *";
+    const sql = "UPDATE pessoas SET nome=$1, idade=$2 WHERE id=$3 RETURNING *";
     const values = [pessoas.nome, pessoas.idade, id];
 
     const cliente = new Client(conexao);
