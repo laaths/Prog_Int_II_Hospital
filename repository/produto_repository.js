@@ -3,9 +3,9 @@ const { Client } = require('pg');
 const conexao = {
     host: 'localhost',
     port: 5432,
-    database: 'crud_produtos',
+    database: 'crud_hospital',
     user: 'postgres',
-    password: 'postgres'
+    password: 'dorgas784'
 };
 
 //Conexao com banco de dados
@@ -13,8 +13,8 @@ exports.listar = (callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query('SELECT * FROM produto', (err, res) => {
-        callback(err,res.rows);
+    cliente.query('SELECT * FROM pessoas', (err, res) => {
+        callback(err, res.rows);
         cliente.end();
     });
 }
@@ -25,7 +25,7 @@ exports.inserir = (produto, callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query(sql, values, (err, res) => { 
+    cliente.query(sql, values, (err, res) => {
         callback(err, res.rows[0]);
         cliente.end();
     });
@@ -37,14 +37,12 @@ exports.buscarPorId = (id, callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query(sql, values, (err, res) => { 
-        if(err){
+    cliente.query(sql, values, (err, res) => {
+        if (err) {
             callback(err, null);
-        }
-        else if(res.rows && res.rows.length > 0) {
+        } else if (res.rows && res.rows.length > 0) {
             callback(null, res.rows[0]);
-        }
-        else {
+        } else {
             const error = "Produto nao encontrado";
             callback(error, null);
         }
@@ -58,19 +56,17 @@ exports.atualizar = (id, produto, callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query(sql, values, (err, res) => { 
-        if(err){
+    cliente.query(sql, values, (err, res) => {
+        if (err) {
             callback(err, null);
-        }
-        else if(res.rows && res.rows.length > 0) {
+        } else if (res.rows && res.rows.length > 0) {
             callback(null, res.rows[0]);
-        }
-        else {
+        } else {
             const error = "Produto nao encontrado";
             callback(error, null);
         }
         cliente.end();
-    });    
+    });
 }
 
 exports.deletar = (id, callback) => {
@@ -79,18 +75,15 @@ exports.deletar = (id, callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query(sql, values, (err, res) => { 
-        if(err){
+    cliente.query(sql, values, (err, res) => {
+        if (err) {
             callback(err, null);
-        }
-        else if(res.rowCount > 0) {
+        } else if (res.rowCount > 0) {
             callback(null, res.rows[0]);
-        }
-        else {
+        } else {
             const error = "Produto nao encontrado";
             callback(error, null);
         }
         cliente.end();
     });
 }
-

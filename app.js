@@ -12,12 +12,14 @@ app.use('/login', loginRota);
 //app.use(usuarioController.validarToken);
 
 const produtoRota = require('./rotas/produto_rota');
-app.use('/produtos', usuarioController.validarToken , produtoRota);
+app.use('/produtos', usuarioController.validarToken, produtoRota);
 
 const usuarioRota = require('./rotas/usuario_rota');
 app.use('/usuarios', usuarioRota);
 
+const pessoasRota = require('./rotas/pessoas_rota')
+app.use('/pessoas', pessoasRota);
 
-app.listen(porta,() => 
+app.listen(porta, () =>
     console.log(`Iniciando o servidor na porta ${porta}`)
 );
