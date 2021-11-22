@@ -75,7 +75,7 @@ exports.atualizar = (req, res) => {
 exports.validarUsuario = (req, res) => {
     const userLogin = req.body;
     if (userLogin && userLogin.username && userLogin.senha) {
-        usuarioRepository.buscarPorUsername(userLogin.username, (err, usuario) => {
+        usuarioRepository.buscarPorusername(userLogin.username, (err, usuario) => {
             if (err) {
                 res.status(401).json({ msg: "Usuario invalido" })
             } else if (usuario) {
@@ -83,8 +83,8 @@ exports.validarUsuario = (req, res) => {
                     const token = jwt.sign({
                         id: usuario.id,
                         nome: usuario.nome
-                    }, "senac2021", { expiresIn: '1h' });
-                    res.status(201).json({ "token": token });
+                    }, "senacrs", { expiresIn: '1h' });
+                    res.status(201).json({ "Usuario Validado - token": token });
                 } else {
                     res.status(401).json({ msg: "Senha invalida" });
                 }

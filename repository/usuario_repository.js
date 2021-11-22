@@ -52,8 +52,8 @@ exports.buscarPorusername = (username, callback) => {
     cliente.query(sql, values, (err, res) => {
         if (err) {
             callback(err, null);
-            //} else if (res.rows && res.rows.length > 0) {
-            //    callback(null, res.rows[0]);
+        } else if (res.rows && res.rows.length > 0) {
+            callback(null, res.rows[0]);
         } else {
             const error = "Usuario nao encontrado";
             callback(error, null);
