@@ -9,10 +9,8 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 const loginRota = require('./rotas/login_rota');
 app.use('/login', loginRota);
 
-//app.use(usuarioController.validarToken);
-
-const produtoRota = require('./rotas/produto_rota');
-app.use('/produtos', usuarioController.validarToken, produtoRota);
+// Valida o Token JWT
+//app.use('/usuarios', usuarioController.validarToken, pessoasRota);
 
 const usuarioRota = require('./rotas/usuario_rota');
 app.use('/usuarios', usuarioRota);
