@@ -4,7 +4,7 @@ const conexao = {
     host: 'localhost',
     port: 5432,
     database: 'crud_hospital',
-    user: 'postgres',
+    user: 'teste',
     password: 'dorgas784'
 };
 
@@ -30,31 +30,6 @@ exports.inserir = (pessoas, callback) => {
         cliente.end();
     });
 }
-
-exports.inserirTriagem = (pessoas, callback) => {
-    if (pessoas.idade >= 80) {
-        const sql = "INSERT INTO fila(pessoa, grau) VALUES ($1, $2) RETURNING *";
-        const values = [fila.pessoa, fila.grau];
-
-        const cliente = new Client(conexao);
-        cliente.connect();
-        cliente.query(sql, values, (err, res) => {
-            callback(err, res.rows[0]);
-            cliente.end();
-        });
-    } else {
-        const sql = "INSERT INTO pessoas(nome, idade) VALUES ($1, $2) RETURNING *";
-        const values = [pessoas.nome, pessoas.idade];
-
-        const cliente = new Client(conexao);
-        cliente.connect();
-        cliente.query(sql, values, (err, res) => {
-            callback(err, res.rows[0]);
-            cliente.end();
-        });
-    }
-}
-
 
 exports.buscarPorId = (id, callback) => {
     const sql = "SELECT * FROM pessoas WHERE id=$1";

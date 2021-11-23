@@ -17,6 +17,9 @@ app.use('/usuarios', usuarioRota);
 const pessoasRota = require('./rotas/pessoas_rota');
 app.use('/pessoas', pessoasRota);
 
+const filaRota = require('./rotas/fila_rota');
+app.use('/fila', filaRota);
+
 app.listen(porta, () =>
     console.log(`Iniciando o servidor na porta ${porta}`)
 );
