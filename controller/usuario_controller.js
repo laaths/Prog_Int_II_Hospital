@@ -100,7 +100,7 @@ exports.validarUsuario = (req, res) => {
 exports.validarToken = (req, res, next) => {
     const token = req.get('Authorization');
     if (token) {
-        jwt.verify(token, "senac2021", (err, payload) => {
+        jwt.verify(token, "senacrs", (err, payload) => {
             if (err) {
                 res.status(403).json({ erro: "Nao tem token de acesso" });
             } else {
