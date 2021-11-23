@@ -40,6 +40,7 @@ exports.inserir = (req, res) => {
         res.status(400).json({ msg: "Entrada de dados invalida" });
     }
 }
+
 exports.atualizar = (req, res) => {
     const id = req.params.id;
     const pessoaAtualizar = req.body;

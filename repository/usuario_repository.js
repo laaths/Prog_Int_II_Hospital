@@ -7,7 +7,6 @@ const conexao = {
     user: 'teste',
     password: 'dorgas784'
 };
-
 //Conexao com banco de dados
 exports.listar = (callback) => {
 
