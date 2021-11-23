@@ -104,7 +104,7 @@ exports.validarToken = (req, res, next) => {
             if (err) {
                 res.status(403).json({ erro: "Nao tem token de acesso" });
             } else {
-                res.status(404).json({ msg: "Usuário autenticado " + payload.id });
+                res.status(404).json({ msg: "Usuário autenticado " });
                 console.log("ID do usuario: " + payload.id);
                 next();
             }
