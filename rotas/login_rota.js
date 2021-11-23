@@ -1,17 +1,13 @@
 //Rota: /login (localhost:3000/login)
+const usuarioController = require('../controller/usuario_controller');
 
 const express = require('express');
 const rota = express.Router();
 
-const usuarioController = require('../controller/usuario_controller');
-
-rota.post('/', usuarioController.validarUsuario);
 
 
-const { requiresAuth } = require('express-openid-connect');
 
-rota.get('/profile', requiresAuth(), (req, res) => {
-    res.send(JSON.stringify(req.oidc.user));
-});
+rota.post('/valida', usuarioController.validarUsuario);
+rota.get('/token', usuarioController.validarToken);
 
 module.exports = rota;

@@ -32,7 +32,7 @@ exports.inserir = (req, res) => {
             if (err) {
                 res.status(500).json({ msg: err.msg })
             } else {
-                res.status(201).send(pessoa);
+                res.status(201).send(pessoaInserido);
             }
         });
     } else {

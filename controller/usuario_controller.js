@@ -83,7 +83,7 @@ exports.validarUsuario = (req, res) => {
                     const token = jwt.sign({
                         id: usuario.id,
                         nome: usuario.nome
-                    }, "senacrs", { expiresIn: '1h' });
+                    }, "Sen@ac2021", { expiresIn: '1h' });
                     res.status(201).json({ "Usuario Validado - token": token });
                 } else {
                     res.status(401).json({ msg: "Senha invalida" });
@@ -100,7 +100,7 @@ exports.validarUsuario = (req, res) => {
 exports.validarToken = (req, res, next) => {
     const token = req.get('Authorization');
     if (token) {
-        jwt.verify(token, "senacrs", (err, payload) => {
+        jwt.verify(token, "Sen@ac2021", (err, payload) => {
             if (err) {
                 res.status(403).json({ erro: "Nao tem token de acesso" });
             } else {

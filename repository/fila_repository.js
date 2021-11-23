@@ -4,7 +4,7 @@ const conexao = {
     host: 'localhost',
     port: 5432,
     database: 'crud_hospital',
-    user: 'teste',
+    user: 'postgres',
     password: 'dorgas784'
 };
 

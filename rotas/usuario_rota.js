@@ -12,4 +12,5 @@ rota.get('/buscar', usuarioController.buscarPorusername);
 rota.put('/:id', usuarioController.atualizar)
 rota.get('/:id', usuarioController.buscarPorId);
 
+
 module.exports = rota;
