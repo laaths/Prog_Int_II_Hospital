@@ -1,11 +1,9 @@
 const { Client } = require('pg');
 
 const conexao = {
-    host: 'localhost',
-    port: 5432,
-    database: 'crud_hospital',
-    user: 'postgres',
-    password: 'dorgas784'
+    url: 'postgres://aashdibljielux:dcf53396c1fe05bd1572074028307631fc37da6028dcb8c0cc7aa8c19c9e550f@ec2-100-24-247-156.compute-1.amazonaws.com:5432/d54pml8qp33mj2',
+    user: 'aashdibljielux',
+    password: 'dcf53396c1fe05bd1572074028307631fc37da6028dcb8c0cc7aa8c19c9e550f'
 };
 
 //Conexao com banco de dados

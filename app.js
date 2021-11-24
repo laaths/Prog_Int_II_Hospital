@@ -6,7 +6,6 @@ const usuarioController = require('./controller/usuario_controller');
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-
 const loginRota = require('./rotas/login_rota');
 app.use('/login', loginRota);
 
