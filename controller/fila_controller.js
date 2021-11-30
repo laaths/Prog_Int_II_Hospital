@@ -19,7 +19,7 @@ exports.inserir = (req, res) => {
             if (err) {
                 res.status(500).json({ msg: err.msg })
             } else {
-                res.status(201).send(fila);
+                res.status(201).send(filaInserida);
             }
         });
     } else {

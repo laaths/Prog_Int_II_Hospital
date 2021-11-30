@@ -44,7 +44,8 @@ exports.buscarPorusername = (req, res) => {
 }
 
 exports.inserir = (req, res) => {
-    let usuario = req.body;
+    let usuario = req.body[0];
+    console.log(usuario)
     if (usuario && usuario.nome && usuario.username && usuario.senha) {
         usuarioRepository.inserir(usuario, (err, usuarioInserido) => {
             if (err) {

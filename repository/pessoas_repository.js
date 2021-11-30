@@ -23,6 +23,10 @@ exports.inserir = (pessoas, callback) => {
     const sql = "INSERT INTO pessoas(nome, idade) VALUES ($1, $2) RETURNING *";
     const values = [pessoas.nome, pessoas.idade];
 
+    console.log("@@@@@@@@@@@@@@@@");
+    console.log(values)
+    console.log(pessoas)
+
     const cliente = new Client(conexao);
     cliente.connect();
     cliente.query(sql, values, (err, res) => {

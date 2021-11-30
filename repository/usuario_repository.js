@@ -4,7 +4,7 @@ const conexao = {
     host: 'localhost',
     port: 5432,
     database: 'crud_hospital',
-    user: 'postgres',
+    user: 'teste',
     password: 'dorgas784'
 };
 //Conexao com banco de dados
@@ -25,6 +25,7 @@ exports.inserir = (usuario, callback) => {
     const cliente = new Client(conexao);
     cliente.connect();
     cliente.query(sql, values, (err, res) => {
+        console.log(res)
         callback(err, res.rows[0]);
         cliente.end();
     });
