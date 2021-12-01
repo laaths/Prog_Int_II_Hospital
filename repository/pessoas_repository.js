@@ -1,4 +1,5 @@
 const { Client } = require('pg');
+require('dotenv').config();
 
 const conexao = {
     user: process.env.POSTGRES_USER,
