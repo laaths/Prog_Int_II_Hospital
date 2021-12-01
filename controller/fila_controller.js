@@ -1,5 +1,5 @@
-const filaRepository = require('../repository/fila_repository');
-const pessoasRepository = require("../repository/pessoas_repository");
+const filaRepository = require('./repository/fila_repository');
+const pessoasRepository = require("./repository/pessoas_repository");
 
 
 exports.listar = (req, res) => {
