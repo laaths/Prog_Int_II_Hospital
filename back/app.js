@@ -1,11 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const porta = 3000;
 const usuarioController = require('./controller/usuario_controller');
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-
+app.use(cors());
 
 const loginRota = require('./rotas/login_rota');
 app.use('/login', loginRota);
