@@ -1,4 +1,4 @@
-const usuarioRepository = require('./repository/usuario_repository');
+const usuarioRepository = require('../repository/usuario_repository');
 
 const jwt = require('jsonwebtoken');
 

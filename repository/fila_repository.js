@@ -1,5 +1,5 @@
 const { Client } = require('pg');
-require('.env').config();
+require('dotenv').config();
 
 const conexao = {
     user: process.env.POSTGRES_USER,
@@ -23,7 +23,7 @@ exports.listar = (callback) => {
     });
 }
 
-exports.inserir = (usuario, callback) => {
+exports.inserir = (fila, callback) => {
     const sql = "INSERT INTO usuario(id, pessoaid, classificacao, nfila) VALUES ($1, $2, $3, $4) RETURNING *";
     const values = [fila.id, fila.pessoaid, fila.classificacao, fila.nfila];
 

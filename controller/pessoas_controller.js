@@ -1,4 +1,4 @@
-const pessoasRepository = require('./repository/pessoas_repository');
+const pessoasRepository = require('../repository/pessoas_repository');
 
 
 exports.listar = (req, res) => {
