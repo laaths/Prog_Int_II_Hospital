@@ -1,5 +1,10 @@
 const { Client } = require('pg');
-const conexao = 'postgres://aashdibljielux:dcf53396c1fe05bd1572074028307631fc37da6028dcb8c0cc7aa8c19c9e550f@ec2-100-24-247-156.compute-1.amazonaws.com:5432/d54pml8qp33mj2?sslmode=require';
+const conexao = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+};
 //Conexao com banco de dados
 exports.listar = (callback) => {
 
