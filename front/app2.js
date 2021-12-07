@@ -1,13 +1,12 @@
 let body = document.querySelector("body");
 let main = document.querySelector("main");
-/*
+
 body.onload = function() {
-    console.log("Inicializando o body");
-    // window.alert("Hello World");
-    buscarPessoas();
-    setInterval(buscarPessoas, 5000);
+    console.log("Loading o body");
+    buscarProdutos();
+    setInterval(buscarProdutos, 5000);
 }
-*/
+
 let cont = 1;
 
 function buscarPessoas() {
@@ -15,7 +14,7 @@ function buscarPessoas() {
     //main.innerHTML = cont++;
 }
 
-function buscarProdutos() {
+function buscarUsuarios() {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const listaUsuarios = JSON.parse(this.responseText);
@@ -43,4 +42,19 @@ function buscarProdutos() {
     }
     xhttp.open("GET", "https://progintiihosp.herokuapp.com/usuarios/listar", true);
     xhttp.send();
+}
+
+function montarTabelaPessoas(listaProdutos) {
+    let tablea = `
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>NOME</th>
+            <th>Preço</th>
+        </tr>
+    </table>
+
+    `;
+    main.innerHTML = tabela;
 }
