@@ -1,0 +1,128 @@
+*{
+	color: black;
+	margin: auto;
+	font-family: -apple-system,BlinkMacSystemFont,segoe ui;
+}
+.result{
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.maindomain {
+	border-radius: 20px;
+	width: 600px;
+    height: 600px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+}
+
+button {
+	background-color: #0ACBAB;
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+	margin-top: 20px;
+	margin-left: 35px;
+	width: 120px;
+	height: 50px;
+	border-radius: 10px;
+}
+
+h1 {
+    color: orangered;
+	margin-top: 5px;
+	text-align: center;
+	font-size: 40px;
+
+}
+
+h2 {
+    color: #0ACBAB;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+   }
+
+h3 {
+	font-size: 25px;
+	background-color: #0ACBAB;
+	text-decoration: none;
+	margin-top: 20px;
+	padding-top: 20px;
+	width: 200px;
+	height:50px;
+	border-radius: 10px;
+
+
+}
+
+
+img {
+	width: 450px;
+
+}
+
+label{
+	color: #706565;
+	font-size: 15px;
+	
+}
+
+input {
+	text-align: center;
+	background-color: #FAF9C1;
+	width: 250px;
+	height: 35px;
+	margin-top: 20px;
+	border-radius: 10px;
+}
+
+::placeholder {
+    color: #706565;
+    text-transform: uppercase;
+}
+
+body {
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #78E1FB;
+	background-repeat: no-repeat;
+	background-size: 130%;
+	height: 500px;
+
+}
+
+form {
+	max-resolution: auto;
+	text-align: center;
+	color: white;
+}
+
+#addpeso {
+	margin-left: 10px;
+}
+
+.container{
+    border-radius: 20px;
+	width: 600px;
+    height: 565px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+}
+
+.result{
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
