@@ -1,4 +1,5 @@
 const { Client } = require('pg');
+<<<<<<< Updated upstream:back/repository/usuario_repository.js
 
 const conexao = {
     host: 'ec2-100-24-247-156.compute-1.amazonaws.com',
@@ -7,6 +8,26 @@ const conexao = {
     user: 'aashdibljielux',
     password: 'dcf53396c1fe05bd1572074028307631fc37da6028dcb8c0cc7aa8c19c9e550f'
 };
+=======
+/*
+const conexao = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+};*/
+
+const conexao = {
+    host: 'localhost',
+    port: 5432,
+    database: 'crud_hospital',
+    user: 'postgres',
+    password: 'dorgas784'
+};
+
+// require('dotenv').config();
+
+>>>>>>> Stashed changes:repository/usuario_repository.js
 //Conexao com banco de dados
 exports.listar = (callback) => {
 

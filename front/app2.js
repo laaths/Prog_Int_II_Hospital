@@ -2,10 +2,16 @@ let body = document.querySelector("body");
 let main = document.querySelector("main");
 /*
 body.onload = function() {
+<<<<<<< Updated upstream
     console.log("Inicializando o body");
     // window.alert("Hello World");
     buscarPessoas();
     setInterval(buscarPessoas, 5000);
+=======
+    console.log("Loading o body");
+    buscarProdutos();
+    // setInterval(buscarProdutos, 5000);
+>>>>>>> Stashed changes
 }
 */
 let cont = 1;
