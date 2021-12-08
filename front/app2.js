@@ -32,6 +32,6 @@ function buscarProdutos() {
         lista = '</ul>';
         main.innerHTML = lista;
     }
-    xhttp.open("GET", "http://localhost:3000/produtos", true);
+    xhttp.open("GET", "http://localhost:3000/usuarios", true);
     xhttp.send();
 }
