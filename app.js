@@ -1,15 +1,15 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
+const cors = require('cors');
 const porta = 3000;
 const usuarioController = require('./back/controller/usuario_controller');
 
+app.use
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cors({
-    origin: "http://localhost:3000",
-
-}));
+//app.use(cors({
+//    origin: "*",
+//}))
 
 // Valida o Token JWT
 const loginRota = require('./back/rotas/login_rota');

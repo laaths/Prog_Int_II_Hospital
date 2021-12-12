@@ -58,7 +58,6 @@ exports.inserir = (fila, callback) => {
 
     // cliente.query('SELECT MAX(nfila) FROM fila WHERE classificacao = "test"');
 
-
     const cliente = new Client(conexao);
     cliente.connect();
     cliente.query(sql, values, (err, res) => {
