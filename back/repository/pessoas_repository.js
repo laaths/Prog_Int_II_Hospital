@@ -1,11 +1,19 @@
 const { Client } = require('pg');
 
+/*
 const conexao = {
-    host: 'ec2-100-24-247-156.compute-1.amazonaws.com',
-    port: '5432',
-    database: 'd54pml8qp33mj2',
-    user: 'aashdibljielux',
-    password: 'dcf53396c1fe05bd1572074028307631fc37da6028dcb8c0cc7aa8c19c9e550f'
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
+};*/
+
+const conexao = {
+    host: 'localhost',
+    port: 5432,
+    database: 'crud_hospital',
+    user: 'teste',
+    password: 'dorgas784'
 };
 
 //Conexao com banco de dados
