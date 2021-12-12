@@ -68,7 +68,7 @@ exports.inserir = (fila, callback) => {
 }
 
 exports.deletar = (id, callback) => {
-    const sql = "DELETE FROM pessoas WHERE id=$1 RETURNING *";
+    const sql = "DELETE FROM fila WHERE id=$1 RETURNING *";
     const values = [id];
 
     const cliente = new Client(conexao);
@@ -79,7 +79,7 @@ exports.deletar = (id, callback) => {
         } else if (res.rowCount > 0) {
             callback(null, res.rows[0]);
         } else {
-            const error = "Pessoa nao encontrado";
+            const error = "Pessoa nao encontrado na fila";
             callback(error, null);
         }
         cliente.end();

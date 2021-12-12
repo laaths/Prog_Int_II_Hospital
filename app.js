@@ -6,7 +6,10 @@ const usuarioController = require('./back/controller/usuario_controller');
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000",
+
+}));
 
 // Valida o Token JWT
 const loginRota = require('./back/rotas/login_rota');
