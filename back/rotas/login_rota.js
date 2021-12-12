@@ -5,8 +5,6 @@ const express = require('express');
 const rota = express.Router();
 
 
-
-
 rota.post('/valida', usuarioController.validarUsuario);
 rota.get('/token', usuarioController.validarToken);
 
