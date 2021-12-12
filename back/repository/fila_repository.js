@@ -12,7 +12,7 @@ const conexao = {
     host: 'localhost',
     port: 5432,
     database: 'crud_hospital',
-    user: 'teste',
+    user: 'postgres',
     password: 'dorgas784'
 };
 
@@ -21,7 +21,7 @@ exports.listar = (callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query('SELECT * FROM fila', (err, res) => {
+    cliente.query('SELECT nome, classificacao, nfila FROM fila, pessoas WHERE fila.pessoaid = pessoas.id', (err, res) => {
         if (res.rowCount = 0) {
             const error = "Não há nenhum dado para listar"
             callback(error, null);
