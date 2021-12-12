@@ -20,11 +20,13 @@ const usuarioRota = require('./back/rotas/usuario_rota');
 app.use('/usuarios', usuarioController.validarToken, usuarioRota);
 
 const pessoasRota = require('./back/rotas/pessoas_rota');
-app.use('/pessoas', cors(), pessoasRota);
-
+app.use('/pessoas', pessoasRota);
 
 const filaRota = require('./back/rotas/fila_rota');
 app.use('/fila', filaRota);
+
+const atendimentoRota = require('./back/rotas/atendimento_rota');
+app.use('/atendimento', atendimentoRota);
 
 app.listen(porta, () =>
     console.log(`Iniciando o servidor na porta ${porta}`)

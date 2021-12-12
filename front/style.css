@@ -22,6 +22,7 @@
 
 .principal {
     display: flex;
+    background-color: #0ACBAB;
 }
 
 .principal div {
@@ -41,7 +42,7 @@ button {
 }
 
 h1 {
-    color: orangered;
+    color: rgb(20, 48, 141);
     margin-top: 5px;
     text-align: center;
     font-size: 40px;
@@ -61,7 +62,7 @@ a:hover {
 
 h3 {
     font-size: 25px;
-    background-color: #0ACBAB;
+    background-color: #bbbbbb;
     text-decoration: none;
     margin-top: 20px;
     padding-top: 20px;
@@ -96,7 +97,7 @@ input {
 body {
     margin-left: auto;
     margin-right: auto;
-    background-color: #78E1FB;
+    background-color: #acacac;
     background-repeat: no-repeat;
     background-size: 130%;
     height: 500px;
