@@ -7,8 +7,6 @@ const conexao = {
     }
 };
 
-// require('dotenv').config();
-
 //Conexao com banco de dados
 exports.listar = (callback) => {
 
