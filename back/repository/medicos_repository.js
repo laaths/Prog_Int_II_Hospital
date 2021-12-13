@@ -1,19 +1,10 @@
 const { Client } = require('pg');
 
-/*
 const conexao = {
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
-};*/
-
-const conexao = {
-    host: 'localhost',
-    port: 5432,
-    database: 'crud_hospital',
-    user: 'postgres',
-    password: 'dorgas784'
 };
 
 //Conexao com banco de dados
