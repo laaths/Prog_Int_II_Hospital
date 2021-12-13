@@ -21,7 +21,7 @@ exports.listar = (callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query('SELECT * FROM atendimento', (err, res) => {
+    cliente.query('SELECT pessoas.nome AS pessoaNome, medicos.nome AS medicoNome FROM atendimento, pessoas, medicos WHERE atendimento.pessoaid = pessoas.id AND atendimento.medicoid = medicos.id', (err, res) => {
         callback(err, res.rows);
         cliente.end();
     });
