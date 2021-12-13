@@ -1,6 +1,4 @@
 let body = document.querySelector("body");
-let main = document.querySelector("main");
-let tabelaElemento = document.querySelector("#tabela");
 let formElemento = document.querySelector("#formulario");
 let buscaFila = document.querySelector("#buscafila");
 let buscaPessoas = document.querySelector("#buscaPessoas");
@@ -20,7 +18,7 @@ function buscarPessoasFila() {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const listapessoas = JSON.parse(this.responseText);
-        let lista = ['<table>' + '<tr>' + '<th>Pessoa</th>' + '<th>Classificação</th>' + '<th>Numero Fila</th>' + '</tr>'];
+        let lista = ['<table>' + '<tr>' + '<th>PACIENTE</th>' + '<th>CLASSIFICAÇÃO</th>' + '<th>N° FILA</th>' + '</tr>'];
         for (let i = 0; i < listapessoas.length; i++) {
             lista += '<tr>'
             lista += `<td>${listapessoas[i].nome}</td>`;
@@ -39,7 +37,7 @@ function buscarPessoas() {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const listapessoas = JSON.parse(this.responseText);
-        let lista = ['<table>' + '<tr>' + '<th>Nome</th>' + '<th>Idade</th>' + '</tr>'];
+        let lista = ['<table>' + '<tr>' + '<th>NOME</th>' + '<th>IDADE</th>' + '</tr>'];
         for (let i = 0; i < listapessoas.length; i++) {
             lista += '<tr>'
             lista += `<td>${listapessoas[i].nome}</td>`;
@@ -59,7 +57,7 @@ function formularioPessoa() {
         <input id='nomeInput'> </br>
         <label type='number' for='idadeInput'>Idade:</label>
         <input id='idadeInput'> </br>
-        <input type="submit" value="Salvar">
+        <input id='button' type="submit" value="Salvar">
     </form>`;
 
     formElemento.innerHTML = formulario;
@@ -80,7 +78,7 @@ function formularioPessoa() {
             idadeInput.value = "";
 
         } else {
-            alert("Campos Nome e Idade obrigatórios");
+            alert("Campos Nome e Idade Obrigatórios");
         }
     }
 }
@@ -90,7 +88,7 @@ function inserirPessoas(pessoasObj) {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const pessoas = JSON.parse(this.responseText);
-        alert(`Pessoa ${pessoas.nome} cadastrado com sucesso!`);
+        alert(`Paciente ${pessoas.nome} Cadastrado!`);
         buscarPessoasFila();
     }
     xhttp.open("POST", "http://localhost:3000/pessoas/inserir", true);

@@ -10,26 +10,45 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     <link rel="manifest" href="img/site.webmanifest">
+    <!-- Importação da Fonte Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
     <!-- Importação do Style CSS -->
     <link rel="stylesheet" href="style.css">
-    <title>Hospital Control</title>
+    <title>Hospital Crudzes</title>
 </head>
 
 <body>
+    <header>
+        <nav id="main-nav">
+            <ul>
+                <li><a href="#section_fila">Sessão Fila</a></li>
+                <li><a href="#section_pessoas">Sessão Pessoas</a></li>
+                <li><a href="#section_atendimento">Sessão Atendimento</a></li>
+            </ul>
+        </nav>
+    </header>
     <div id="principal">
-        <section>
-            <h1>Cadastro Pessoas</h1>
+        <section id="section_pessoas">
+            <h1>Cadastro de Pacientes</h1>
             <div id="formulario"></div>
+            <h1>Tabela de Pacientes</h1>
+            <div id="buscaPessoas"></div>
         </section>
 
-        <section>
+        <section id="section_fila">
+            <!-- <h1>Cadastro Fila</h1> -->
             <h1>Tabela de Fila</h1>
             <div id="buscafila"></div>
         </section>
 
-        <section>
-            <h1>Tabela de Pessoas</h1>
-            <div id="buscaPessoas"></div>
+        <section id="section_atendimento">
+            <!-- <h1>Cadastro Atendimento</h1> -->
+
+            <h1>Tabela de Atendidos</h1>
+            <div id="buscaAtendimento"></div>
         </section>
     </div>
 </body>
