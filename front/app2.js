@@ -29,7 +29,7 @@ function buscarPessoasFila() {
         lista += '</table>';
         buscaFila.innerHTML = lista;
     }
-    xhttp.open("GET", "http://localhost:3000/fila/listar", true);
+    xhttp.open("GET", "https://progintiihosp.herokuapp.com/fila/listar", true);
     xhttp.send();
 }
 
@@ -47,7 +47,7 @@ function buscarPessoas() {
         lista += '</table>';
         buscaPessoas.innerHTML = lista;
     }
-    xhttp.open("GET", "http://localhost:3000/pessoas/listar", true);
+    xhttp.open("GET", "https://progintiihosp.herokuapp.com/pessoas/listar", true);
     xhttp.send();
 }
 
@@ -91,7 +91,7 @@ function inserirPessoas(pessoasObj) {
         alert(`Paciente ${pessoas.nome} Cadastrado!`);
         buscarPessoasFila();
     }
-    xhttp.open("POST", "http://localhost:3000/pessoas/inserir", true);
+    xhttp.open("POST", "https://progintiihosp.herokuapp.com/pessoas/inserir", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(pessoasObj));
 }
