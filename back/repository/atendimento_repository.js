@@ -1,24 +1,35 @@
 const { Client } = require('pg');
+
+/*
 const conexao = {
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
+};*/
+
+const conexao = {
+    host: 'localhost',
+    port: 5432,
+    database: 'crud_hospital',
+    user: 'postgres',
+    password: 'dorgas784'
 };
+
 //Conexao com banco de dados
 exports.listar = (callback) => {
 
     const cliente = new Client(conexao);
     cliente.connect();
-    cliente.query('SELECT * FROM pessoas', (err, res) => {
+    cliente.query('SELECT pessoas.nome AS pessoaNome, medicos.nome AS medicoNome FROM atendimento, pessoas, medicos WHERE atendimento.pessoaid = pessoas.id AND atendimento.medicoid = medicos.id', (err, res) => {
         callback(err, res.rows);
         cliente.end();
     });
 }
 
-exports.inserir = (pessoas, callback) => {
-    const sql = "INSERT INTO pessoas(nome, idade) VALUES ($1, $2) RETURNING *";
-    const values = [pessoas.nome, pessoas.idade];
+exports.inserir = (atendimento, callback) => {
+    const sql = "INSERT INTO atendimento(pessoaid, medicoid) VALUES ($1, $2) RETURNING *";
+    const values = [atendimento.pessoaid, atendimento.medicoid];
 
     const cliente = new Client(conexao);
     cliente.connect();
@@ -29,7 +40,7 @@ exports.inserir = (pessoas, callback) => {
 }
 
 exports.buscarPorId = (id, callback) => {
-    const sql = "SELECT * FROM pessoas WHERE id=$1";
+    const sql = "SELECT * FROM atendimento WHERE id=$1";
     const values = [id];
 
     const cliente = new Client(conexao);
@@ -40,16 +51,16 @@ exports.buscarPorId = (id, callback) => {
         } else if (res.rows && res.rows.length > 0) {
             callback(null, res.rows[0]);
         } else {
-            const error = "Pessoa nao encontrada";
+            const error = "Atendimento não encontrado";
             callback(error, null);
         }
         cliente.end();
     });
 }
 
-exports.atualizar = (id, pessoas, callback) => {
-    const sql = "UPDATE pessoas SET nome=$1, idade=$2 WHERE id=$3 RETURNING *";
-    const values = [pessoas.nome, pessoas.idade, id];
+exports.atualizar = (id, atendimento, callback) => {
+    const sql = "UPDATE atendimento SET pessoaid=$1, medicoid=$2 WHERE id=$3 RETURNING *";
+    const values = [atendimento.pessoaid, atendimento.medicoid, id];
 
     const cliente = new Client(conexao);
     cliente.connect();
@@ -59,7 +70,7 @@ exports.atualizar = (id, pessoas, callback) => {
         } else if (res.rows && res.rows.length > 0) {
             callback(null, res.rows[0]);
         } else {
-            const error = "pessoas nao encontrado";
+            const error = "Atendimento nao encontrado";
             callback(error, null);
         }
         cliente.end();
@@ -67,7 +78,7 @@ exports.atualizar = (id, pessoas, callback) => {
 }
 
 exports.deletar = (id, callback) => {
-    const sql = "DELETE FROM pessoas WHERE id=$1 RETURNING *";
+    const sql = "DELETE FROM atendimento WHERE id=$1 RETURNING *";
     const values = [id];
 
     const cliente = new Client(conexao);
@@ -78,7 +89,7 @@ exports.deletar = (id, callback) => {
         } else if (res.rowCount > 0) {
             callback(null, res.rows[0]);
         } else {
-            const error = "Pessoa nao encontrado";
+            const error = "Atendimento nao encontrado";
             callback(error, null);
         }
         cliente.end();

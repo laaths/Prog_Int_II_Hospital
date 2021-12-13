@@ -1,0 +1,134 @@
+* {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13.5px;
+    text-rendering: optimizeLegibility;
+    background-color: #45AC8B;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: 130%;
+}
+
+#principal {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#principal section {
+    margin: 10px;
+    padding: 20px;
+    border: 5px solid black;
+    width: 28%;
+    min-width: 350px;
+}
+
+header {
+    background-color: black;
+}
+
+#main-nav ul {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+}
+
+#main-nav ul li {
+    list-style: none;
+    display: inline-flex;
+    padding: 10px;
+}
+
+#button {
+    text-align: center ;
+    background-color: #0ACBAB;
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+    margin-left: 100px;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: rgb(20, 48, 141);
+    margin-top: 5px;
+    font-size: 35px;
+}
+
+h2 {
+    color: #0ACBAB;
+}
+
+a {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: 25px;
+    text-decoration: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+img {
+    width: 450px;
+}
+
+label {
+    font-size: 15px;
+}
+
+input {
+    width: 250px;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+form {
+    color: white;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-radius: 10px;
+    table-layout: fixed;
+    width: 100%;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th {
+    padding: 10px;
+}
+
+td {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
