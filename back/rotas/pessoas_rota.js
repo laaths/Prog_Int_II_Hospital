@@ -7,6 +7,7 @@ const pessoaController = require('../controller/pessoas_controller');
 
 rota.get('/listar', pessoaController.listar);
 rota.post('/inserir', pessoaController.inserir);
+rota.get('/nome/:nome', pessoaController.buscarPorNome);
 rota.get('/:id', pessoaController.buscarPorId);
 rota.put('/:id', pessoaController.atualizar);
 rota.delete('/:id', pessoaController.deletar);

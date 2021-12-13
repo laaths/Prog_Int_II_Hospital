@@ -58,6 +58,25 @@ exports.buscarPorId = (id, callback) => {
     });
 }
 
+exports.buscarPorNome = (nome, callback) => {
+    const sql = "SELECT * FROM pessoas WHERE nome=$1";
+    const values = [nome];
+
+    const cliente = new Client(conexao);
+    cliente.connect();
+    cliente.query(sql, values, (err, res) => {
+        if (err) {
+            callback(err, null);
+        } else if (res.rows && res.rows.length > 0) {
+            callback(null, res.rows);
+        } else {
+            const error = "Pessoa nao encontrada";
+            callback(error, null);
+        }
+        cliente.end();
+    });
+}
+
 exports.atualizar = (id, pessoas, callback) => {
     const sql = "UPDATE pessoas SET nome=$1, idade=$2 WHERE id=$3 RETURNING *";
     const values = [pessoas.nome, pessoas.idade, id];

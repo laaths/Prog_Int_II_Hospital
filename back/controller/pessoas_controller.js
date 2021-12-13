@@ -25,6 +25,19 @@ exports.buscarPorId = (req, res) => {
     });
 }
 
+exports.buscarPorNome = (req, res) => {
+    const nome = req.params.nome;
+    pessoasRepository.buscarPorNome(nome, (err, pessoaEncontrado) => {
+        if (err) {
+            res.status(500).json({ msg: err })
+        } else if (pessoaEncontrado) {
+            res.json(pessoaEncontrado);
+        } else {
+            res.status(404).json({ msg: "Pessoa nao encontrada" });
+        }
+    });
+}
+
 exports.inserir = (req, res) => {
     let pessoa = req.body;
     if (pessoa && pessoa.nome && pessoa.idade) {

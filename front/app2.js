@@ -1,9 +1,10 @@
 let body = document.querySelector("body");
 let main = document.querySelector("main");
 let tabelaElemento = document.querySelector("#tabela");
-let formElemento = document.querySelector("#formulario");
+let formElementoPessoa = document.querySelector("#formulario");
 let buscaFila = document.querySelector("#buscafila");
 let buscaPessoas = document.querySelector("#buscaPessoas");
+
 
 body.onload = function() {
     console.log("Inicializando o body");
@@ -13,8 +14,6 @@ body.onload = function() {
     setInterval(buscarPessoasFila, 10000);
     formularioPessoa()
 }
-
-let cont = 1;
 
 function buscarPessoasFila() {
     let xhttp = new XMLHttpRequest();
@@ -54,28 +53,38 @@ function buscarPessoas() {
 }
 
 function formularioPessoa() {
-    const formulario = `<form id="formPessoas">
+    formElementoPessoa.innerHTML = `<form id="formPessoas">
         <label for='nomeInput'>Nome:</label>
         <input id='nomeInput'> </br>
         <label type='number' for='idadeInput'>Idade:</label>
         <input id='idadeInput'> </br>
+        <input id='classificInput' type="radio" name="classificacao" value="azul"> Azul
+        <br>
+        <input id='classificInput' type="radio" name="classificacao" value="verde"> Verde
+        <br>
+        <input id='classificInput' type="radio" name="classificacao" value="amarelo"> Amarelo
+        <br>
+        <input id='classificInput' type="radio" name="classificacao" value="laranja"> Laranja
+        <br>
+        <input id='classificInput' type="radio" name="classificacao" value="Vermelho"> Vermelho
+        <br>
         <input type="submit" value="Salvar">
+        
     </form>`;
-
-    formElemento.innerHTML = formulario;
 
     const formPessoas = document.querySelector("#formPessoas");
     formPessoas.onsubmit = function(event) {
         event.preventDefault();
         const nomeInput = document.querySelector("#nomeInput");
         const idadeInput = document.querySelector("#idadeInput");
+        const classificInput = document.querySelector("#classificInput")
 
-        if (nomeInput.value && idadeInput.value) {
+        if (nomeInput.value && idadeInput.value && classificInput.value) {
             let pessoas = new Object();
             pessoas.nome = nomeInput.value;
             pessoas.idade = idadeInput.value;
             //Chamada AJAX para inserir produto
-            inserirPessoas(pessoas);
+            inserirPessoas(pessoas, classificInput.value);
             nomeInput.value = "";
             idadeInput.value = "";
 
@@ -85,15 +94,39 @@ function formularioPessoa() {
     }
 }
 
-function inserirPessoas(pessoasObj) {
-    console.log(pessoasObj.nome, pessoasObj.idade);
+function inserirPessoas(pessoasObj, classificInput) {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const pessoas = JSON.parse(this.responseText);
         alert(`Pessoa ${pessoas.nome} cadastrado com sucesso!`);
-        buscarPessoasFila();
+        let buscaInserido = httpGet("http://localhost:3000/pessoas/nome/"+pessoas.nome)
+        buscaInserido = JSON.parse(this.responseText)
+        let buscaInseridoObj = new Object();
+        buscaInseridoObj.pessoaid = buscaInserido.id
+        buscaInseridoObj.classificacao = classificInput
+        inserirFila(buscaInseridoObj);
     }
     xhttp.open("POST", "http://localhost:3000/pessoas/inserir", true);
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(pessoasObj));
 }
+
+function inserirFila(pessoasObj) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        const pessoas = JSON.parse(this.responseText);
+        alert(`${pessoas.nome} cadastrado na fila com sucesso!`);
+    }
+    xhttp.open("POST", "http://localhost:3000/fila/inserir", false);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.send(JSON.stringify(pessoasObj));
+}
+
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
