@@ -1,0 +1,128 @@
+* {
+    color: black;
+    background-color: white;
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, segoe ui;
+}
+
+
+.result {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.maindomain {
+    border-radius: 20px;
+    width: 600px;
+    height: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+.principal {
+    display: flex;
+    background-color: white;
+    width: auto;
+}
+
+.principal div {
+    flex-direction: column;
+}
+
+#button {
+    background-color: #0ACBAB;
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    margin-top: 20px;
+    margin-left: 35px;
+    width: 120px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #5DE8C8;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 40px;
+}
+
+h2 {
+    color: #0ACBAB;
+}
+
+
+h3 {
+    font-size: 25px;
+    background-color: #bbbbbb;
+    text-decoration: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+#img {
+    width: 100%;
+    background-color:white;
+}
+
+img {
+    
+    padding-left: 25%;
+    width: 50%;
+    height: 450px;
+}
+
+label {
+    color: #706565;
+    font-size: 15px;
+}
+
+input {
+    text-align: center;
+    background-color: #FAF9C1;
+    width: 250px;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+
+body {
+    background-size: 100%;
+    width: 600px;;
+    height: 500px;
+}
+
+form {
+    text-align: center;
+    color: white;
+}
+
+#addpeso {
+    margin-left: 10px;
+}
+
+}
+
+.result {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+td {
+    text-align: center;
+}
