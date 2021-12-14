@@ -5,7 +5,6 @@
     font-family: -apple-system, BlinkMacSystemFont, segoe ui;
 }
 
-
 .result {
     width: auto;
     margin-left: auto;
@@ -55,7 +54,6 @@ h2 {
     color: #0ACBAB;
 }
 
-
 h3 {
     font-size: 25px;
     background-color: #bbbbbb;
@@ -69,11 +67,10 @@ h3 {
 
 #img {
     width: 100%;
-    background-color:white;
+    background-color: white;
 }
 
 img {
-    
     padding-left: 25%;
     width: 50%;
     height: 450px;
@@ -93,10 +90,10 @@ input {
     border-radius: 10px;
 }
 
-
 body {
     background-size: 100%;
-    width: 600px;;
+    width: 600px;
+    ;
     height: 500px;
 }
 
@@ -107,8 +104,6 @@ form {
 
 #addpeso {
     margin-left: 10px;
-}
-
 }
 
 .result {

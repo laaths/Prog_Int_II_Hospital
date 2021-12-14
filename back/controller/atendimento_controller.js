@@ -27,7 +27,7 @@ exports.buscarPorId = (req, res) => {
 
 exports.inserir = (req, res) => {
     let atendimento = req.body;
-    if (atendimento && atendimento.pessoaid && pessoa.medicoid) {
+    if (atendimento && atendimento.pessoaid && atendimento.medicoid) {
         atendimentoRepository.inserir(atendimento, (err, atendimentoInserido) => {
             if (err) {
                 res.status(500).json({ msg: err.msg })

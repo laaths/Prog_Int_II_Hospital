@@ -24,8 +24,8 @@
     <header>
         <nav id="main-nav">
             <ul>
-                <li><a href="#section_fila">Sessão Fila</a></li>
                 <li><a href="#section_pessoas">Sessão Pessoas</a></li>
+                <li><a href="#section_fila">Sessão Fila</a></li>
                 <li><a href="#section_atendimento">Sessão Atendimento</a></li>
             </ul>
         </nav>
@@ -33,17 +33,26 @@
     <div id="principal">
         <section id="section_pessoas">
             <h1>Cadastro de Pacientes</h1>
-            <div id="formulario"></div>
+            <div class="divform" id="formularioPessoas"></div>
             <h1>Tabela de Pacientes</h1>
             <div id="buscaPessoas"></div>
         </section>
 
         <section id="section_fila">
-            <!-- <h1>Cadastro Fila</h1> -->
+            <h1>Cadastro Fila</h1>
+            <div class="divform" id="formularioFila"></div>
             <h1>Tabela de Fila</h1>
             <div id="buscafila"></div>
         </section>
 
+        <section id="section_atendimento">
+            <h1>Cadastro Atendimento</h1>
+            <div class="divform" id="formularioAtendimento"></div>
+            <h1>Tabela de Atendidos</h1>
+            <div id="buscaAtendimento"></div>
+        </section>
+
+        <!-- 
         <section id="section-chamada">
             <h1>Painel Chamada</h1>
             <div id="printaChamadaFila">
@@ -53,15 +62,26 @@
                 <input type="button" onclick="chamaFila()" value="Chamar Fila">
             </div>
         </section>
+        -->
 
-        <section id="section_atendimento">
-            <!-- <h1>Cadastro Atendimento</h1> -->
-
-            <h1>Tabela de Atendidos</h1>
-            <div id="buscaAtendimento"></div>
-        </section>
     </div>
 </body>
+
+<!-- 
+<script>
+    function submit_pessoas() {
+        document.getElementById("formPessoas").submit();
+    }
+
+    function submit_fila() {
+        document.getElementById("formFila").submit();
+    }
+
+    function submit_atendimento() {
+        document.getElementById("formAtendimento").submit();
+    }
+</script>
+-->
 <script src="app2.js"></script>
 
 </html>
