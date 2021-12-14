@@ -1,7 +1,6 @@
 * {
-    color: black;
     font-family: 'Roboto', sans-serif;
-    font-size: 13.5px;
+    font-size: 18px;
     text-rendering: optimizeLegibility;
 }
 
@@ -90,10 +89,6 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    color: #0ACBAB;
-}
-
 a {
     font-size: 18px;
     text-decoration: none;
@@ -136,7 +131,7 @@ select {
 }
 
 form {
-    color: white;
+    color: Black;
 }
 
 table {

@@ -113,141 +113,54 @@ function formularioFila() {
         <input class="centraliza" type="submit" value="Salvar">
     </form>`;
 
-    const formPessoas = document.querySelector("#formFila");
-    formPessoas.onsubmit = function(event) {
-        event.preventDefault();
-        const pessoaidFilaInput = document.querySelector("#pessoaidFilaInput");
-        const classificacaoFilaInput = document.querySelector('#classificacaoFilaInput option:checked');
-
-        if (pessoaidFilaInput && classificacaoFilaInput) {
-            let pessoas = new Object();
-            pessoas.pessoaid = pessoaidFilaInput.value;
-            pessoas.classificacao = classificacaoFilaInput.value;
-            //Chamada AJAX para inserir produto
-            inserirpessoaFila(pessoas);
-            pessoaidFilaInput.value = "";
-            classificacaoFilaInput.value = "";
-
-        } else {
-            alert("Campos Nome e Idade obrigatórios");
+    /*
+    function buscarPessoasFila() {
+        function formularioMedico() {
+            formElementoMedico.innerHTML = `<label for="medicos">Escolha o Medico:</label>
+            <select name="formMedicos" id="formMedicos" form="formMedico">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+           
+            <input id='button'type="submit" value="Salvar">
+            
+        </form>`;
         }
-    }
-}
+        */
 
-function buscarPessoasFila() {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        const listapessoas = JSON.parse(this.responseText);
-        let lista = ['<table>' + '<tr>' + '<th>Pessoa</th>' + '<th>Classificação</th>' + '<th>Numero Fila</th>' + '</tr>'];
-        for (let i = 0; i < listapessoas.length; i++) {
-            lista += '<tr>'
-            lista += `<td>${listapessoas[i].nome}</td>`;
-            lista += `<td>${listapessoas[i].classificacao}</td>`;
-            lista += `<td>${listapessoas[i].nfila}</td>`;
-            lista += '</tr>'
+    function inserirpessoaFila(pessoasObj) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            const pessoas = JSON.parse(this.responseText);
+            alert(`${pessoas.nome} cadastrado na fila com sucesso!`);
         }
-        lista += '</table>';
-        buscaFila.innerHTML = lista;
+        xhttp.open("POST", "http://localhost:3000/fila/inserir", false);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify(pessoasObj));
     }
-    xhttp.open("GET", "http://localhost:3000/fila/listar", true);
-    xhttp.send();
-}
 
-function inserirpessoaFila(pessoasObj) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        const pessoas = JSON.parse(this.responseText);
-        alert(`${pessoas.nome} cadastrado na fila com sucesso!`);
-    }
-    xhttp.open("POST", "http://localhost:3000/fila/inserir", false);
-    xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send(JSON.stringify(pessoasObj));
-}
 
-function chamaFila() {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        const listaFila = JSON.parse(this.responseText);
-        let listaPessoasGet = httpGet("http://localhost:3000/pessoas/nome/" + listaFila[0].nome)
-        listaPessoasGet = JSON.parse(this.responseText)
-        console.log(listaPessoasGet)
-        let lista = [`<h1>nome: ${listaPessoasGet[0].nome}</h1>`, `<h1>Classificação: ${listaFila[0].classificacao}</h1>`]
+    /////////////////////////////////////////////////////////// - ATENDIMENTO
 
-        printaChamada.innerHTML = lista
 
-        let listaFilaObj = new Object();
-        listaFilaObj.pessoaid = listaPessoasGet.id
-        listaFilaObj.medicoid = 6 //ID DO MEDICO - BUSCAR EM OUTRA TABELA E SE POSSIVEL RANDOM
-    }
-    xhttp.open("GET", "http://localhost:3000/fila/listarAlloriginal", true);
-    xhttp.send();
-}
 
-/////////////////////////////////////////////////////////// - ATENDIMENTO
-
-function formularioAtendimento() {
-    formElementoAtendimento.innerHTML = `<form id="formAtendimento">
-        <label for='pessoaidAtendimentoInput'>ID da Pessoa:</label>
-        <input type='number' id='pessoaidAtendimentoInput'> </br>
-        <label for='medicoidAtendimentoInput'>ID do Médico:</label>
-        <input type='number' id='medicoidAtendimentoInput'> </br>
-        </br>
-    
-        <input class="centraliza" type="submit" value="Salvar">
-    </form>`;
-
-    const formPessoas = document.querySelector("#formAtendimento");
-    formPessoas.onsubmit = function(event) {
-        event.preventDefault();
-        const pessoaidAtendimentoInput = document.querySelector("#pessoaidAtendimentoInput");
-        const classificacaoAtendimentoInput = document.querySelector('#medicoidAtendimentoInput');
-        console.log(classificacaoAtendimentoInput);
-        if (pessoaidAtendimentoInput && classificacaoAtendimentoInput) {
-            let pessoas = new Object();
-            pessoas.pessoaid = pessoaidAtendimentoInput.value;
-            pessoas.medicoid = classificacaoAtendimentoInput.value;
-            //Chamada AJAX para inserir produto
-            inserirpessoaAtendimento(pessoas);
-            pessoaidAtendimentoInput.value = "";
-            classificacaoAtendimentoInput.value = "";
-        } else {
-            alert("Campos ID Pessoa e Id Médico do Atendimento obrigatórios");
+    function inserirpessoaAtendimento(pessoasObj) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            const pessoas = JSON.parse(this.responseText);
+            alert(`${pessoas.nome} cadastrado no atendimento com sucesso!`);
         }
+        xhttp.open("POST", "http://localhost:3000/atendimento/inserir", false);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.send(JSON.stringify(pessoasObj));
     }
-}
 
-function buscarAtendimentos() {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        const listaAtendimentos = JSON.parse(this.responseText);
-        let lista = ['<table>' + '<tr>' + '<th>Paciente</th>' + '<th>Medico Responsável</th>' + '</tr>'];
-        for (let i = 0; i < listaAtendimentos.length; i++) {
-            lista += '<tr>'
-            lista += `<td>${listaAtendimentos[i].pessoanome}</td>`;
-            lista += `<td>${listaAtendimentos[i].mediconome}</td>`;
-            lista += '</tr>'
-        }
-        lista += '</table>';
-        buscaAtendimento.innerHTML = lista;
+    function httpGet(theUrl) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", theUrl, false);
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
     }
-    xhttp.open("GET", "http://localhost:3000/atendimento/listar", true);
-    xhttp.send();
-}
-
-function inserirpessoaAtendimento(pessoasObj) {
-    let xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        const pessoas = JSON.parse(this.responseText);
-        alert(`${pessoas.nome} cadastrado no atendimento com sucesso!`);
-    }
-    xhttp.open("POST", "http://localhost:3000/atendimento/inserir", false);
-    xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send(JSON.stringify(pessoasObj));
-}
-
-function httpGet(theUrl) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", theUrl, false);
-    xmlHttp.send(null);
-    return xmlHttp.responseText;
 }
