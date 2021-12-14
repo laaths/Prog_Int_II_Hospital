@@ -57,18 +57,19 @@ function formularioPessoa() {
         <label for='nomeInput'>Nome:</label>
         <input id='nomeInput'> </br>
         <label type='number' for='idadeInput'>Idade:</label>
-        <input id='idadeInput'> </br>
-        <input id='classificInput' type="radio" name="classificacao" value="azul"> Azul
+        <input id='idadeInput'>
+        <label for ='classificInput'><p>Classificação:</p></label>
+        <input id='classificInput' type="radio" name="classificInput" value="Azul">Azul
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="verde"> Verde
+        <input id='classificInput' type="radio" name="classificInput" value="Verde">Verde
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="amarelo"> Amarelo
+        <input id='classificInput' type="radio" name="classificInput" value="Amarelo">Amarelo
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="laranja"> Laranja
+        <input id='classificInput' type="radio" name="classificInput" value="Laranja">Laranja
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="Vermelho"> Vermelho
+        <input id='classificInput' type="radio" name="classificInput" value="Vermelho">Vermelho
         <br>
-        <input type="submit" value="Salvar">
+        <input id='button'type="submit" value="Salvar">
         
     </form>`;
 
@@ -77,7 +78,8 @@ function formularioPessoa() {
         event.preventDefault();
         const nomeInput = document.querySelector("#nomeInput");
         const idadeInput = document.querySelector("#idadeInput");
-        const classificInput = document.querySelector("#classificInput")
+        const classificInput = document.querySelector('input[name="classificInput"]:checked');
+
 
         if (nomeInput.value && idadeInput.value && classificInput.value) {
             let pessoas = new Object();

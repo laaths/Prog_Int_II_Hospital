@@ -1,5 +1,4 @@
 * {
-    color: black;
     font-family: 'Roboto', sans-serif;
     font-size: 13.5px;
     text-rendering: optimizeLegibility;
@@ -45,14 +44,22 @@ header {
     padding: 10px;
 }
 
+#classificInput {
+    height: 21px;
+    width: 21px;
+    margin-top: 0px;
+    margin-left: 35%;
+}
+
+
 #button {
     text-align: center ;
-    background-color: #0ACBAB;
+    background-color: whitesmoke;
     font-size: 17px;
     font-weight: bold;
     color: black;
     margin-top: 20px;
-    margin-left: 100px;
+    margin-left: 30%;
     width: 120px;
     height: 50px;
     border-radius: 10px;
@@ -104,7 +111,8 @@ input {
 }
 
 form {
-    color: white;
+    color: Black;
+    
 }
 
 
