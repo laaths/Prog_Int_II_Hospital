@@ -19,7 +19,7 @@ body.onload = function() {
     console.log("Inicializando o body");
     buscarPessoas();
     buscarAtendimentos();
-    buscarpessoaFila()
+    buscarpessoaFila();
     setInterval(buscarPessoas, 5000);
     setInterval(buscarPessoas, 5000);
     setInterval(buscarAtendimentos, 5000);
@@ -137,10 +137,10 @@ function inserirpessoaFila(pessoasObj) {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const pessoas = JSON.parse(this.responseText);
-        let listaPessoasGet = httpGet("http://localhost:3000/pessoas/nome/" + pessoas.pessoaid)
-        console.log(listaPessoasGet)
-        listaPessoasGet = JSON.parse(this.responseText)
-        alert(`${pessoas.nome}} cadastrado na fila com sucesso!`);
+        let listaPessoasGet = httpGet("http://localhost:3000/pessoas/" + pessoas.pessoaid)
+        let listaPessoasGet2 = JSON.parse(listaPessoasGet)
+
+        alert(`${listaPessoasGet2.nome} cadastrado na fila com sucesso!`);
     }
     xhttp.open("POST", "http://localhost:3000/fila/inserir", false);
     xhttp.setRequestHeader("Content-Type", "application/json");
@@ -240,7 +240,10 @@ function inserirpessoaAtendimento(pessoasObj) {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const pessoas = JSON.parse(this.responseText);
-        alert(`${pessoas.nome} cadastrado no atendimento com sucesso!`);
+        let listaPessoasGet = httpGet("http://localhost:3000/pessoas/" + pessoas.pessoaid)
+        let listaPessoasGet2 = JSON.parse(listaPessoasGet)
+
+        alert(`${listaPessoasGet2.nome} cadastrado no atendimento com sucesso!`);
     }
     xhttp.open("POST", "http://localhost:3000/atendimento/inserir", false);
     xhttp.setRequestHeader("Content-Type", "application/json");
