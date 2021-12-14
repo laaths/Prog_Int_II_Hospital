@@ -4,15 +4,18 @@ let tabelaElemento = document.querySelector("#tabela");
 let formElementoPessoa = document.querySelector("#formulario");
 let buscaFila = document.querySelector("#buscafila");
 let buscaPessoas = document.querySelector("#buscaPessoas");
+let buscarAtendimentosMedicos = document.querySelector("#buscaAtendimento")
+let printaChamada = document.querySelector("#printaChamadaFila")
 
 
 body.onload = function() {
     console.log("Inicializando o body");
     buscarPessoasFila();
     buscarPessoas();
-    setInterval(buscarPessoas, 10000);
-    setInterval(buscarPessoasFila, 10000);
+    setInterval(buscarPessoas, 5000);
+    setInterval(buscarPessoasFila, 5000);
     formularioPessoa()
+    buscarAtendimentos()
 }
 
 function buscarPessoasFila() {
@@ -34,6 +37,27 @@ function buscarPessoasFila() {
     xhttp.send();
 }
 
+function chamaFila(){
+        let xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+        const listaFila = JSON.parse(this.responseText);
+            let listaPessoasGet = httpGet("http://localhost:3000/pessoas/nome/"+listaFila[0].nome)
+            listaPessoasGet = JSON.parse(this.responseText)
+            console.log(listaPessoasGet)
+            let lista = [`<h1>nome: ${listaPessoasGet[0].nome}</h1>`,`<h1>Classificação: ${listaFila[0].classificacao}</h1>`]
+
+        printaChamada.innerHTML = lista
+
+        let listaFilaObj = new Object();
+        listaFilaObj.pessoaid = listaPessoasGet.id
+        listaFilaObj.medicoid = 6 //ID DO MEDICO - BUSCAR EM OUTRA TABELA E SE POSSIVEL RANDOM
+    }
+    xhttp.open("GET", "http://localhost:3000/fila/listarAlloriginal", true);
+    xhttp.send();
+}
+
+
+
 function buscarPessoas() {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
@@ -52,21 +76,39 @@ function buscarPessoas() {
     xhttp.send();
 }
 
+function buscarAtendimentos() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        const listaAtendimentos = JSON.parse(this.responseText);
+        let lista = ['<table>' + '<tr>' + '<th>Paciente</th>' + '<th>Medico</th>' + '</tr>'];
+        for (let i = 0; i < listaAtendimentos.length; i++) {
+            lista += '<tr>'
+            lista += `<td>${listaAtendimentos[i].pessoanome}</td>`;
+            lista += `<td>${listaAtendimentos[i].mediconome}</td>`;
+            lista += '</tr>'
+        }
+        lista += '</table>';
+        buscarAtendimentosMedicos.innerHTML = lista;
+    }
+    xhttp.open("GET", "http://localhost:3000/atendimento/listar", true);
+    xhttp.send
+}
+
 function formularioPessoa() {
     formElementoPessoa.innerHTML = `<form id="formPessoas">
         <label for='nomeInput'>Nome:</label>
         <input id='nomeInput'> </br>
         <label type='number' for='idadeInput'>Idade:</label>
-        <input id='idadeInput'> </br>
-        <input id='classificInput' type="radio" name="classificacao" value="azul"> Azul
+        <input id='idadeInput'></br>
+        <input id='classificInput' type="radio" name="classificInput" value="Azul"> Azul
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="verde"> Verde
+        <input id='classificInput' type="radio" name="classificInput" value="Verde"> Verde
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="amarelo"> Amarelo
+        <input id='classificInput' type="radio" name="classificInput" value="Amarelo"> Amarelo
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="laranja"> Laranja
+        <input id='classificInput' type="radio" name="classificInput" value="Laranja"> Laranja
         <br>
-        <input id='classificInput' type="radio" name="classificacao" value="Vermelho"> Vermelho
+        <input id='classificInput' type="radio" name="classificInput" value="Vermelho"> Vermelho
         <br>
         <input type="submit" value="Salvar">
         
@@ -77,7 +119,7 @@ function formularioPessoa() {
         event.preventDefault();
         const nomeInput = document.querySelector("#nomeInput");
         const idadeInput = document.querySelector("#idadeInput");
-        const classificInput = document.querySelector("#classificInput")
+        const classificInput = document.querySelector('input[name="classificInput"]:checked');
 
         if (nomeInput.value && idadeInput.value && classificInput.value) {
             let pessoas = new Object();
@@ -121,6 +163,9 @@ function inserirFila(pessoasObj) {
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(pessoasObj));
 }
+
+
+
 
 function httpGet(theUrl)
 {
