@@ -25,8 +25,11 @@ app.use('/pessoas', pessoasRota);
 const filaRota = require('./back/rotas/fila_rota');
 app.use('/fila', filaRota);
 
+const medicoRota = require('./back/rotas/medicos_rota');
+app.use('/atendimento', medicoRota);
+
 const atendimentoRota = require('./back/rotas/atendimento_rota');
-app.use('/atendimento', atendimentoRota);
+app.use('/medicos', atendimentoRota);
 
 app.listen(porta, () =>
     console.log(`Iniciando o servidor na porta ${porta}`)
