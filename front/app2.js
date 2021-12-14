@@ -240,10 +240,12 @@ function inserirpessoaAtendimento(pessoasObj) {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         const pessoas = JSON.parse(this.responseText);
-        let listaPessoasGet = httpGet("http://localhost:3000/pessoas/" + pessoas.pessoaid)
-        let listaPessoasGet2 = JSON.parse(listaPessoasGet)
+        let listaPaciente = httpGet("http://localhost:3000/pessoas/" + pessoas.pessoaid);
+        let listaPaciente2 = JSON.parse(listaPaciente);
+        let listaMedicos = httpGet("http://localhost:3000/medicos/" + pessoas.medicoid);
+        let listaMedicos2 = JSON.parse(listaMedicos);
 
-        alert(`${listaPessoasGet2.nome} cadastrado no atendimento com sucesso!`);
+        alert(`${listaPaciente2.nome} será atendido(a) por ${listaMedicos2.nome}`);
     }
     xhttp.open("POST", "http://localhost:3000/atendimento/inserir", false);
     xhttp.setRequestHeader("Content-Type", "application/json");
