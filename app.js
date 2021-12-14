@@ -25,6 +25,9 @@ app.use('/pessoas', pessoasRota);
 const filaRota = require('./back/rotas/fila_rota');
 app.use('/fila', filaRota);
 
+const medicoRota = require('./back/rotas/medicos_rota');
+app.use('/medicos', medicoRota);
+
 const atendimentoRota = require('./back/rotas/atendimento_rota');
 app.use('/atendimento', atendimentoRota);
 

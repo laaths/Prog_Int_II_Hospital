@@ -6,6 +6,7 @@ const rota = express.Router();
 const filaController = require('../controller/fila_controller');
 
 rota.get('/listar', filaController.listar);
+rota.get('/listarAllOriginal', filaController.listarAllOriginal)
 rota.get('/:classificacao', filaController.buscarPorClassificacao);
 rota.post('/inserir', filaController.inserir);
 rota.delete('/deletar', filaController.deletarFila);

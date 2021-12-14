@@ -10,6 +10,16 @@ exports.listar = (req, res) => {
     })
 }
 
+exports.listarAllOriginal = (req, res) => {
+    filaRepository.listar((err, listaFila) => {
+        if (err) {
+            res.status(500).json({ msg: err.msg })
+        } else {
+            res.json(listaFila);
+        }
+    })
+}
+
 exports.buscarPorClassificacao = (req, res) => {
     const classificacao = req.params.classificacao;
     filaRepository.buscarPorClassificacao(classificacao, (err, filaEncontrada) => {

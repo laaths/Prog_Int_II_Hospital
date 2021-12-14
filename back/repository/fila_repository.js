@@ -32,6 +32,21 @@ exports.listar = (callback) => {
     });
 }
 
+exports.listarAllOriginal = (callback) => {
+
+    const cliente = new Client(conexao);
+    cliente.connect();
+    cliente.query('SELECT * FROM fila', (err, res) => {
+        if (res.rowCount = 0) {
+            const error = "Não há nenhum dado para listar"
+            callback(error, null);
+        } else {
+            callback(err, res.rows);
+        }
+        cliente.end();
+    });
+}
+
 exports.buscarPorClassificacao = (classificacao, callback) => {
     const sql = "SELECT * FROM fila WHERE classificacao=$1";
     const values = [classificacao];
