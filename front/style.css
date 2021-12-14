@@ -1,6 +1,6 @@
 * {
     font-family: 'Roboto', sans-serif;
-    font-size: 13.5px;
+    font-size: 18px;
     text-rendering: optimizeLegibility;
     background-color: #45AC8B;
 }
@@ -13,6 +13,8 @@ body {
     background-repeat: no-repeat;
     background-size: 130%;
 }
+
+
 
 #principal {
     width: 100%;
@@ -69,10 +71,6 @@ h1 {
     color: rgb(20, 48, 141);
     margin-top: 5px;
     font-size: 35px;
-}
-
-h2 {
-    color: #0ACBAB;
 }
 
 a {

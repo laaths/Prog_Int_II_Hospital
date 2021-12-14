@@ -44,7 +44,7 @@ function chamaFila(){
             let listaPessoasGet = httpGet("http://localhost:3000/pessoas/nome/"+listaFila[0].nome)
             listaPessoasGet = JSON.parse(this.responseText)
             console.log(listaPessoasGet)
-            let lista = [`<h1>nome: ${listaPessoasGet[0].nome}</h1>`,`<h1>Classificação: ${listaFila[0].classificacao}</h1>`]
+            let lista = [`<p>Nome: ${listaPessoasGet[0].nome}</p>`+`<p>Classificação: ${listaFila[0].classificacao}</p>`]
 
         printaChamada.innerHTML = lista
 
@@ -99,20 +99,21 @@ function formularioPessoa() {
         <label for='nomeInput'>Nome:</label>
         <input id='nomeInput'> </br>
         <label type='number' for='idadeInput'>Idade:</label>
-        <input id='idadeInput'></br>
-        <input id='classificInput' type="radio" name="classificInput" value="Azul"> Azul
+        <input id='idadeInput'>
+        <label for ='classificInput'><p>Classificação:</p></label>
+        <input id='classificInput' type="radio" name="classificInput" value="Azul">Azul
         <br>
-        <input id='classificInput' type="radio" name="classificInput" value="Verde"> Verde
+        <input id='classificInput' type="radio" name="classificInput" value="Verde">Verde
         <br>
-        <input id='classificInput' type="radio" name="classificInput" value="Amarelo"> Amarelo
+        <input id='classificInput' type="radio" name="classificInput" value="Amarelo">Amarelo
         <br>
-        <input id='classificInput' type="radio" name="classificInput" value="Laranja"> Laranja
+        <input id='classificInput' type="radio" name="classificInput" value="Laranja">Laranja
         <br>
-        <input id='classificInput' type="radio" name="classificInput" value="Vermelho"> Vermelho
+        <input id='classificInput' type="radio" name="classificInput" value="Vermelho">Vermelho
         <br>
-        <input type="submit" value="Salvar">
+        <input id='button'type="submit" value="Salvar">
         
-    </form>`;
+    </form>`;   
 
     const formPessoas = document.querySelector("#formPessoas");
     formPessoas.onsubmit = function(event) {
@@ -136,6 +137,20 @@ function formularioPessoa() {
     }
 }
 
+/*function formularioMedico() {
+    formElementoMedico.innerHTML = `<label for="medicos">Escolha o Medico:</label>
+    <select name="formMedicos" id="formMedicos" form="formMedico">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="opel">Opel</option>
+      <option value="audi">Audi</option>
+    </select>
+   
+    <input id='button'type="submit" value="Salvar">
+    
+</form>`;
+}
+*/
 function inserirPessoas(pessoasObj, classificInput) {
     let xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
